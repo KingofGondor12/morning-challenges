@@ -20,6 +20,25 @@
 #
 
 def in_array_advanced (needle, haystack, strict)
-  # Your code here
-  
+  if strict
+    haystack.each do |compare|
+      if compare == needle
+        @result = true
+      elsif compare != needle
+        @result = false
+      end
+    end
+    @result
+  else
+    haystack.each do |compare|
+      down_compare = compare.downcase
+      down_needle = needle.downcase
+      if down_compare == down_needle
+        @result = true
+      elsif down_compare != down_needle
+        @result = false
+      end
+    end
+    @result
+  end
 end

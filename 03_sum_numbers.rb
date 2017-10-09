@@ -15,5 +15,11 @@
 #
 
 def sum_numbers (numbers)
-  # Your code here
+  total = 0
+  sum = 0
+  numbers.each do |number|
+    sum = sum + number
+  end
+  total = total + sum
+  puts total
 end

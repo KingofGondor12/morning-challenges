@@ -16,5 +16,12 @@
 #
 
 def in_array (needle, haystack)
-  # Your code here
+  haystack.each do |compare|
+    if compare == needle
+      @result = true
+    elsif compare != needle
+      @result = false
+    end
+  end
+  @result
 end
