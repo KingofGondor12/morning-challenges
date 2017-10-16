@@ -15,5 +15,5 @@
 #
 
 def vowels (string)
-  string.inspect
+  
 end
