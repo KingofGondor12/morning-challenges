@@ -15,5 +15,12 @@
 #
 
 def vowels (string)
-  
+  vowel_list = ["a", "e", "i", "o", "u"]
+  result = []
+  string.split("").each do |letter|
+    if vowel_list.include? letter.downcase
+      result.push letter
+    end
+  end
+  return result
 end

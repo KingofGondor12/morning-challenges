@@ -19,5 +19,11 @@
 #
 
 def unique (mylist)
-  # Your code here
+  check = []
+  mylist.each do |item|
+    if !check.include?(item)
+      check.push item
+    end
+  end
+  return check
 end

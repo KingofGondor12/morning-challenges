@@ -21,5 +21,16 @@
 #
 
 class Dictionary
-  # Your code here
+  def initialise
+    @dictionary = {}
+  end
+  def add_word (word, definition)
+    @dictionary[word] = definition
+  end
+  def lookup (word)
+    @dictionary.fetch(word)
+  end
+  def total_words
+    @dictionary.length
+  end
 end
