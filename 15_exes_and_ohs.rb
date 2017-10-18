@@ -23,5 +23,17 @@
 #
 
 def ExesAndOhs(string)
-  # yo' co' here
+  result = {}
+  string.downcase.split("").each do |letter|
+    if !result[letter]
+      result[letter] = 1
+    elsif result[letter]
+      result[letter] += 1
+    end
+  end
+  if result['x'] == result['o']
+    return true
+  else
+    return false
+  end
 end
