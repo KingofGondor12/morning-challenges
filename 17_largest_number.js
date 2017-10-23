@@ -15,8 +15,12 @@ mocha tests/17_largest_number_test.js
 */
 
 function largestNumber (a, b) {
-  // Your code here
-  // Google JS syntax ;)
+  if (a < b) {
+    return b
+  }
+  else if (a > b) {
+    return a
+  }
 }
 
 
