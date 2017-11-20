@@ -19,15 +19,17 @@
     browser knowns you're sending it HTML.
 
 */
-
+var contentType = require('content-type')
 const http = require('http')
 const port = 3000
-
+var message = contentType.parse('text/html; charset=utf-8')
 const requestHandler = (request, response) => {
 
   console.log('Woop, new request!', request.method, request.url);
-
-  if (request.url === '/hello') {
+  if (request.url === '/') {
+    response.end('<h1> Welcome </h1>')
+  }
+  else if (request.url === '/hello') {
     response.end('world')
   }
 
