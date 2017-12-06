@@ -23,6 +23,15 @@
 
 const sumFinder = (numbers, sum) => {
   // Your code here
+  let found = false
+  const total = numbers.reduce((a, b) => a + b, 0);
+  if(total == sum) {
+    found = true
+    return found
+  }
+  else {
+    return found
+  }
 }
 
 module.exports = sumFinder;

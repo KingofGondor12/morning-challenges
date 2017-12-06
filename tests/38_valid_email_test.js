@@ -20,4 +20,7 @@ describe("Valid Email", function() {
   it("Should identify valid emails", function() {
     assert.equal(validEmail('hello@edabit.com'), true);
   });
+  it("Should have a value before and after the dot", function() {
+  assert.equal(validEmail('y@.'), false);
+  });
 });
