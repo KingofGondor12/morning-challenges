@@ -73,17 +73,52 @@ Nice to meet you!
 Greetings!
 Goodbye!
 
+*/
+
+const sayGreetings = (accessory) => {
+  console.log('Greetings!')
+  accessory()
+}
+
+const sayNiceToMeetYou = () => {
+  console.log('Nice to meet you!')
+}
+
+const sayGoodbye = () => {
+  console.log('Goodbye!')
+}
+
+sayGreetings(sayNiceToMeetYou)
+sayGreetings(sayGoodbye)
 
 
+/*
 BEAST MODE
 ----------
 Warning: brain explosion ahead. Push through:
 
 https://gist.github.com/scottdixon/6cede0935d2367c5453a74170c08c944
 
+*/
 
+const filter = (items, callback) => {
+  const results = []
+  items.map((item) => {
+    if (callback(item)) {
+      results.push(item)
+    }
+    console.log(results)
+  })
 
+}
 
+// I'm using your Filter method to return even numbers.
+// If your filter method is correct, this code should return: [2, 4]
+filter([1,2,3,4], (item) => {
+  return item % 2 === 0
+})
+
+/*
 GOT THIS FAR?
 -------------
 Implement .map
