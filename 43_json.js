@@ -51,23 +51,28 @@ const shop = {
 
 const shopTitle = () => {
   // Return the shop title (you have access to the shop object from here)
+  return (shop.title)
 }
 
 const upperCase = (string) => {
   // Return an uppercase version of string
+  return string.toUpperCase()
 }
 
 const upperCaseShopTitle = () => {
   // Return an uppercase shop title.
   // Don't repeat yourself. Use the two functions you just built!
+  return upperCase(shopTitle())
 }
 
 const productById = (productId) => {
   // Return a specific product object
+  return (shop.products.find(product => product.id === productId))
 }
 
 const productCost = (productId) => {
   // given a product id, return its cost. DRY ;)
+  return (productById(productId).price)
 }
 
 const formatAddress = (email) => {
@@ -75,18 +80,29 @@ const formatAddress = (email) => {
   // streetNumber street, city, postcode
   // E.g. 10 Amelia St, Sydney, 2000
   // Hint: some destructuring might save you a few lines.
+  let customer = shop.customers[email].address
+  return (`${customer.streetNumber} ${customer.street}, ${customer.city}, ${customer.postcode}`)
 }
 
 const totalCost = (email, orderId) => {
   // Return the total cost of an order.
+  let total = 0
+  const order = shop.customers[email].orders.find(order => order.id === orderId)
+  return order.items.reduce((total, item) => {
+    return total += (item.qty * productCost(item.productId))
+  }, 0)
 }
 
 const addProduct = (id, title, price) => {
   // Add a product to the shop.
+  product = {id, title, price}
+  shop.products.push(product)
 }
 
 const updateProductPrice = (id, newPrice) => {
   // Update the price of a specific product
+  product = productById(id)
+  product.price = newPrice
 }
 
 // Test all the things
