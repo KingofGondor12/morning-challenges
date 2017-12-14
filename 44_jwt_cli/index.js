@@ -1,20 +1,46 @@
 const jwt = require('jsonwebtoken');
 const colors = require('colors');
+const inquirer = require('inquirer');
 
 class SimpleJwt {
+  constructor(props){
+    this.state = {
+      password: props
+    }
+  }
   sign (payload) {
     // Return a JWT
-    const token = jwt.sign(payload, 'abc');
-    console.log(token);
+    const token = jwt.sign(payload, this.state.password);
+    console.log(token.rainbow);
   }
-  verify (jwt) {
+  verify (userToken) {
     // return the contents or a message re failure
-    return jwt.verify(jwt, 'abc')
+    try {
+      console.log(jwt.verify(userToken, this.state.password).green)
+    }
+    catch(err) {
+      console.log(`An error occured! ${err}`.red)
+    }
   }
 }
 
-const simpleJwt = new SimpleJwt()
-simpleJwt.sign('hello');
+const simpleJwt = new SimpleJwt('abc')
+inquirer.prompt([{
+  name: "SignOrVerify",
+  message: "What would you like to do?",
+  type: "list",
+  choices: ["Sign A Token", "Verify A Token"]
+}]).then(answers => {
+    if (answers.SignOrVerify === "Verify A Token") {
+      simpleJwt.verify('eyJhbGciOiJIUzI1NiJ9.aGVsbG8.VAgmvkJuS6IXOU8fN1gkjFHMUpLQK0xYgTxzwrM1YRI')
+    } else if (answers.SignOrVerify === "Sign A Token") {
+      simpleJwt.sign('hello');
+    } else {
+      console.log("Please try again.")
+    }
+});
+
+
 
 /*
 
