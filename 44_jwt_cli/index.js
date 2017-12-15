@@ -4,19 +4,17 @@ const inquirer = require('inquirer');
 
 class SimpleJwt {
   constructor(props){
-    this.state = {
-      password: props
-    }
+    this.password: props
   }
   sign (payload) {
     // Return a JWT
-    const token = jwt.sign(payload, this.state.password);
+    const token = jwt.sign(payload, this.password);
     console.log(token.rainbow);
   }
   verify (userToken) {
     // return the contents or a message re failure
     try {
-      console.log(jwt.verify(userToken, this.state.password).green)
+      console.log(jwt.verify(userToken, this.password).green)
     }
     catch(err) {
       console.log(`An error occured! ${err}`.red)
